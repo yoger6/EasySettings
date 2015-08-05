@@ -25,7 +25,7 @@ namespace Tests
         [TestMethod]
         public void FileHelperProvidesNonEmptyPath()
         {
-            var helper= new SettingsFileHelper();
+            var helper= new XmlSettingsFileHelper();
             var path = helper.Directory;
 
             Assert.IsFalse(string.IsNullOrEmpty(path));
@@ -41,7 +41,7 @@ namespace Tests
         [TestMethod]
         public void SavingSettingsCreatesFileInProgramDirectory()
         {
-            var helper = new SettingsFileHelper();
+            var helper = new XmlSettingsFileHelper();
             _settings.Add("number", 1);
         
             _writer.Write(_settings);

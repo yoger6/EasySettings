@@ -6,9 +6,8 @@ namespace EasySettings.IO
 {
     public class XmlSettingsWriter : ISettingsWriter
     {
-
         private readonly XmlSerializer _serializer = new XmlSerializer(typeof(DictionarySerializationHelper));
-        private readonly SettingsFileHelper _fileHelper = new SettingsFileHelper();
+        private readonly SettingsFileHelper _fileHelper = new XmlSettingsFileHelper();
 
         public XmlSettingsWriter() { }
 
@@ -19,11 +18,11 @@ namespace EasySettings.IO
 
         public void Write(Settings settings)
         {
-            if(settings.GetAll().Count == 0)
+            if(settings.Collection.Count == 0)
                 throw new EmptySettingsException("");
 
-            var dictionaryHelper = new DictionarySerializationHelper(settings.GetAll());
-            using (var stream = _fileHelper.GetWriteStream(FileTypes.Xml))
+            var dictionaryHelper = new DictionarySerializationHelper(settings.Collection);
+            using (var stream = _fileHelper.GetWriteStream())
             {
                 _serializer.Serialize(stream, dictionaryHelper);
             }

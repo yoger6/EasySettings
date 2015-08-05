@@ -40,7 +40,7 @@ namespace Tests
         public void AddNewSettingIsPersisted()
         {
             _settings.Add("setting", "value");
-            var settingsAmount =_settings.GetAll().Count;
+            var settingsAmount =_settings.Collection.Count;
 
             Assert.AreEqual(1, settingsAmount);
         }

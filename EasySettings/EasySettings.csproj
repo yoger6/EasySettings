@@ -44,9 +44,9 @@
     <Compile Include="Interfaces\ISettingsReader.cs" />
     <Compile Include="Interfaces\ISettingsWriter.cs" />
     <Compile Include="IO\DictionarySerializationHelper.cs" />
-    <Compile Include="IO\FileTypes.cs" />
     <Compile Include="IO\Pair.cs" />
     <Compile Include="IO\SettingsFileHelper.cs" />
+    <Compile Include="IO\XmlSettingsFileHelper.cs" />
     <Compile Include="IO\XmlSettingsReader.cs" />
     <Compile Include="IO\XmlSettingsWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

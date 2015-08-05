@@ -1,7 +1,9 @@
-﻿namespace EasySettings.Interfaces
+﻿using System.Collections.Generic;
+
+namespace EasySettings.Interfaces
 {
     public interface ISettingsReader
     {
-        Settings Read();
+        Dictionary<string, object> Read();
     }
 }

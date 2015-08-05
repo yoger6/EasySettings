@@ -1,4 +1,5 @@
 ﻿using EasySettings;
+using EasySettings.Interfaces;
 using EasySettings.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -7,7 +8,7 @@ namespace Tests
     [TestClass]
     public class FileLoadSettingsTests
     {
-        private XmlSettingsReader _reader;
+        private ISettingsReader _reader;
 
         [TestInitialize]
         public void TestSetup()
@@ -24,15 +25,18 @@ namespace Tests
         [TestMethod]
         public void LoadSettingsFileHasCorrectAmountOfItems()
         {
-            var settings = _reader.Read();
+            var settings = new Settings();
+            settings.Load(_reader);
 
-            Assert.AreEqual(3, settings.GetAll().Count);
+            Assert.AreEqual(3, settings.Collection.Count);
         }
 
         [TestMethod]
         public void CanRetrieveLoadedValues()
         {
-            var settings = _reader.Read();
+            var settings = new Settings();
+            settings.Load(_reader);
+
             var retrievedString = settings.Get("some string");
             var retrievedInt = settings.Get("some int");
             var retrievedFloat = settings.Get("some float");

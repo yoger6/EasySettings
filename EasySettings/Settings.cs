@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using EasySettings.Interfaces;
+using EasySettings.IO;
 
 namespace EasySettings
 {
-    public class Settings
+    public sealed class Settings
     {
         private Dictionary<string, object> _settings;
+        public Dictionary<string, object> Collection => _settings;
+
 
         public Settings()
         {
             _settings = new Dictionary<string, object>();
         }
 
-        public Settings(Dictionary<string, object> settings)
-        {
-            _settings = settings;
-        }
 
         public void Add(string key, object obj)
         {
@@ -34,10 +34,34 @@ namespace EasySettings
             return _settings[key];
         }
 
-        public Dictionary<string, object> GetAll()
+        public void Save()
         {
-            return _settings;
+            SaveSettings(new XmlSettingsWriter());
         }
 
+        public void Save(ISettingsWriter writer)
+        {
+            SaveSettings(writer);
+        }
+
+        private void SaveSettings(ISettingsWriter writer)
+        {
+            writer.Write(this);
+        }
+
+        public void Load()
+        {
+            LoadSettings(new XmlSettingsReader());
+        }
+
+        public void Load(ISettingsReader reader)
+        {
+            LoadSettings(reader);
+        }
+
+        private void LoadSettings(ISettingsReader reader)
+        {
+            _settings = reader.Read();
+        }
     }
 }
