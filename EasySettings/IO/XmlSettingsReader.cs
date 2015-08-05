@@ -8,6 +8,13 @@ namespace EasySettings.IO
         private XmlSerializer _serializer = new XmlSerializer(typeof(DictionarySerializationHelper));
         private SettingsFileHelper _fileHelper = new SettingsFileHelper();
 
+        public XmlSettingsReader() { }
+
+        public XmlSettingsReader(string path)
+        {
+            _fileHelper.Directory = path;
+        }
+
         public Settings Read()
         {
             using (var stream = _fileHelper.GetReadStream(FileTypes.Xml))
