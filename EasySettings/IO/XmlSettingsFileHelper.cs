@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace EasySettings.IO
+﻿namespace EasySettings.IO
 {
     public class XmlSettingsFileHelper : SettingsFileHelper
     {

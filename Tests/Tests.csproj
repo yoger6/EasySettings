@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="FileLoadSettingsTests.cs" />
     <Compile Include="FileSaveSettingsTests.cs" />
+    <Compile Include="JsonSettingsReaderTests.cs" />
+    <Compile Include="JsonSettingsWriterTests.cs" />
     <Compile Include="SettingsOperationsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

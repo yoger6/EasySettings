@@ -19,7 +19,7 @@ namespace EasySettings.IO
         public void Write(Settings settings)
         {
             if(settings.Collection.Count == 0)
-                throw new EmptySettingsException("");
+                throw new EmptySettingsException("Cannot write empty settings file.");
 
             var dictionaryHelper = new DictionarySerializationHelper(settings.Collection);
             using (var stream = _fileHelper.GetWriteStream())
